@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/graph_nav"
+    app:startDestination="@id/listadoTareasFr">
+
+    <fragment
+        android:id="@+id/mostrarDetalleTareaFr"
+        android:name="com.example.listatareas.MostrarDetalleTareaFr"
+        android:label="fragment_mostrar_detalle_tarea"
+        tools:layout="@layout/fragment_mostrar_detalle_tarea" />
+    <fragment
+        android:id="@+id/nuevaTareaFr"
+        android:name="com.example.listatareas.NuevaTareaFr"
+        android:label="fragment_nueva_tarea"
+        tools:layout="@layout/fragment_nueva_tarea" />
+    <fragment
+        android:id="@+id/listadoTareasFr"
+        android:name="com.example.listatareas.ListadoTareasFr"
+        android:label="fragment_listado_tareas"
+        tools:layout="@layout/fragment_listado_tareas" >
+        <action
+            android:id="@+id/action_listadoTareasFr_to_mostrarDetalleTareaFr"
+            app:destination="@id/mostrarDetalleTareaFr" />
+        <action
+            android:id="@+id/action_listadoTareasFr_to_nuevaTareaFr"
+            app:destination="@id/nuevaTareaFr" />
+    </fragment>
+</navigation>
