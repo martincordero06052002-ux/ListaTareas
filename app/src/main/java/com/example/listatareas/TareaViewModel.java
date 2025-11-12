@@ -18,8 +18,6 @@ public class TareaViewModel extends AndroidViewModel {
         super(application);
         //Inicializo la lista de tareas
         listTareas = new TareasRepositorio();
-        //actualizo la variable muitable de la lista de tareas
-        // para que si hay un observador pueda obtener su valor
         listTareasMutableLiveData.setValue(listTareas.obtener());
     }
 
@@ -29,8 +27,6 @@ public class TareaViewModel extends AndroidViewModel {
     }
 
     void insertar(Tarea elemento){
-        //llama al método insertar del modelo, este al tener el interfac callback
-        //necestita que implementemos los metodos de dicho interfaz en este caso notificarcambios
         listTareas.insertar(elemento, new TareasRepositorio.Callback() {
             @Override
             public void notificarCambios(List<Tarea> elementos) {
@@ -55,6 +51,14 @@ public class TareaViewModel extends AndroidViewModel {
                 listTareasMutableLiveData.setValue(elementos);
             }
         });
+    }
+
+    MutableLiveData<Tarea> tareaSeleccionada = new MutableLiveData<>();
+    public void seleccionar(Tarea tarea) {
+        tareaSeleccionada.setValue(tarea);
+    }
+    public MutableLiveData<Tarea> obtenerSeleccionada() {
+        return tareaSeleccionada;
     }
 
 }
